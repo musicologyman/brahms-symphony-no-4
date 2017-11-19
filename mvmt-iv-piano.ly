@@ -160,7 +160,7 @@ varVR = \relative g {
 }
 
 varVIR = \relative a {
-  <a fis'>8 (c b e g b
+  <a fis'>8 _\markup \italic { espress. cresc. } (c b e g b
   <c, a'> e <c es>4.) b'8
   (<c, a'> es d g b d
   <es, c'> g <es fis>4.)
@@ -186,7 +186,7 @@ varVIR = \relative a {
     }
   >>
 
-  <g b g'>8 \f [(e')] <b dis fis b> \f (dis) r8.
+  <g b g'>8 \f [(e')] <b dis fis b> \f ([dis]) r8.
 
 }
 
@@ -283,8 +283,13 @@ dynamics =
   \repeat unfold 4 { s2. \noBreak }
   s4 s2 \<
   s2.
-  s \!
+  s \! \break
   s2. -\markup { \italic "poco" \dynamic f }
+  s2. * 6 \noBreak
+  s2. \break
+  s2. * 7
+  s2 \bar "" \break
+    s4
 }
 
 varVL = \relative e {
@@ -314,7 +319,7 @@ varVIL = \relative e, {
     \\
     { s4 dis4\arpeggio b }
   >>
-  <e, e'>8 [(g)] <b, b'> (<fis'' b>) d8.\rest
+  <e, e'>8 [(g)] <b, b'> ([<fis'' b>]) d8.\rest
 }
 
 \score {
