@@ -37,8 +37,8 @@ varIR = \relative e {
   r4 <b e b'>8^! r r4
   \clef bass r4 <dis, a' b>8^! r r4
   \clef treble
-    r
-    <<
+  r
+  <<
     {
       e''4 (d!
       cis a \stemDown b
@@ -72,32 +72,39 @@ varIR = \relative e {
       ais4
     }
   >>
-  << { \stemDown \slurUp <g, g'> (<a fis' a>
-  <b g' b> <cis a' cis> <dis fis dis'>
-  <a' c a'> <g b g'> <fis a fis'>)
+  <<
+    {
+      \stemDown \slurUp <g, g'> (<a fis' a>
+      <b g' b> <cis a' cis> <dis fis dis'>
+      <a' c a'> <g b g'> <fis a fis'>)
     }
     \\
     {
-        s2
-        \stemUp
-        e2 s4
-        s2.
+      s2
+      \stemUp
+      e2 s4
+      s2.
     }
   >>
 }
 
 varIIIR = \relative e' {
-   <e g c e>4-. <dis fis b dis>-. <e g c e>-.
-   << { <fis fis'>2.-> } \\
-      { <b dis>4-. <ais cis>-. <b dis>-. } >>
-   <g b e g>4-. <fis b dis fis>-. <g b e g>-.
-   << { <a a'>2.-> } \\
-      { <d! fis>4-. <cis e>-. <d fis>-. } >>
-   <ais cis fis ais>-> <gis b d gis>-> <ais cis fis ais>->
-   <b e b'>-> <ais cis fis ais>-> <b e b'>->
-   <fis a! dis>-> <e a cis>-> <fis a dis>->
-   <<
-    { <e e'>2. ~
+  <e g c e>4-. <dis fis b dis>-. <e g c e>-.
+  <<
+    { <fis fis'>2.-> } \\
+    { <b dis>4-. <ais cis>-. <b dis>-. }
+  >>
+  <g b e g>4-. <fis b dis fis>-. <g b e g>-.
+  <<
+    { <a a'>2.-> } \\
+    { <d! fis>4-. <cis e>-. <d fis>-. }
+  >>
+  <ais cis fis ais>-> <gis b d gis>-> <ais cis fis ais>->
+  <b e b'>-> <ais cis fis ais>-> <b e b'>->
+  <fis a! dis>-> <e a cis>-> <fis a dis>->
+  <<
+    {
+      <e e'>2. ~
       <e e'>8 b e4. b'8
       a4 c4. <a, dis>8
       b4 b'4. e8
@@ -106,8 +113,9 @@ varIIIR = \relative e' {
       <b b'>4. g'8 e4 ~
       e8 c a4. fis8
       dis2 (e4)
-      } \\
-    { <c! e>4 <b d!> <a c>
+    } \\
+    {
+      <c! e>4 <b d!> <a c>
       <g b>8 s r <g b>4.
       r8 <c e> r <dis a'>4 s8
       r8 e, r <b' e>4.
@@ -116,51 +124,69 @@ varIIIR = \relative e' {
       r8 <e g> r <g ais cis>4.
       r8 <e fis> r <a, dis>4.
       r8 <a fis'> r <g b>4.
-      }
-   >>
+    }
+  >>
 }
 
 varVR = \relative g {
-    r8
-    <<
-        {
-            <g b> (<fis dis'> <g e'> ais' b)
-            b ^\> (a c4. dis,8 ^\!)
-            b'\rest b, ^\< (e ais <e b'> e')
-            e ^\! ^\> (dis fis4. c8 ^\!)
-            fis8 (e g4. cis,8)
-            b\rest cis' (b g e ais,)
-            r c! (b a! fis dis)
-            fis ^\< (c b4. ^\! ^\> e8 ^\! )
-        }
-        \\
-        {
-            s8 s4 e8 r
-            r e (dis c) r4
-            s8 b \change Staff = "down" \stemUp a g s4
-            \change Staff = "up"
-            r8 \stemNeutral fis' [e \change Staff="down" \stemUp dis]
-                \change Staff="up" \stemNeutral fis r
-            r g [fis \change Staff = "down" e]
-                \change Staff = "up" \stemNeutral g r
-            s8 <ais e'> [<b g'> <ais cis>] \stemDown g r
-            r <dis a'> [<e g> fis] c r
-            s a ~ a4 \change Staff = "down"
-              \stemUp g
-        }
-    >>
+  r8
+  <<
+    {
+      <g b> (<fis dis'> <g e'> ais' b)
+      b ^\> (a c4. dis,8 ^\!)
+      b'\rest b, ^\< (e ais <e b'> e')
+      e ^\! ^\> (dis fis4. c8 ^\!)
+      fis8 (e g4. cis,8)
+      b\rest cis' (b g e ais,)
+      r c! (b a! fis dis)
+      fis ^\< (c b4. ^\! ^\> e8 ^\! )
+    }
+    \\
+    {
+      s8 s4 e8 r
+      r e (dis c) r4
+      s8 b \change Staff = "down" \stemUp a g s4
+      \change Staff = "up"
+      r8 \stemNeutral fis' [e \change Staff="down" \stemUp dis]
+      \change Staff="up" \stemNeutral fis r
+      r g [fis \change Staff = "down" e]
+      \change Staff = "up" \stemNeutral g r
+      s8 <ais e'> [<b g'> <ais cis>] \stemDown g r
+      r <dis a'> [<e g> fis] c r
+      s a ~ a4 \change Staff = "down"
+      \stemUp g
+    }
+  >>
 }
 
 varVIR = \relative a {
-    <a fis'>8 (c b e g b
-    <c, a'> e <c es>4.) b'8
-    (<c, a'> es d g b d
-    <es, c'> g <es fis>4.) d'8
-    (<e,! cis'> [g]
-        << \new Voice { \stemUp fis4. fis'8} { \stemDown fis,8 [ais cis) fis] } >>
-    \stemNeutral
-    <g, e'>8 [b]
-        << \new Voice { \stemUp a!4. g'8} { \stemDown a,8 [cis e g] } >>
+  <a fis'>8 (c b e g b
+  <c, a'> e <c es>4.) b'8
+  (<c, a'> es d g b d
+  <es, c'> g <es fis>4.)
+  <<
+    \mergeDifferentlyDottedOn
+    \mergeDifferentlyHeadedOn
+    {
+      s8 s4 \stemUp fis4. fis'8
+      s4 a,4. g'8
+      (fis c!
+      \mergeDifferentlyHeadedOff
+      b dis fis a)
+    }
+    \\
+    {
+      \slurUp
+      d,8
+      (\stemUp <e,! cis'> [g] \stemDown fis8 [ais cis) fis]
+      (<g, e'> b a! [cis e) g]
+      a,4
+      \once \override NoteColumn.force-hshift = #2.5
+      <a b>2
+    }
+  >>
+
+  <g b g'>8 \f [(e')] <b dis fis b> \f (dis) r8.
 
 }
 
@@ -189,49 +215,50 @@ varIL = \relative e, {
 }
 
 varIIL = \relative a, {
-\set Staff.connectArpeggios = ##t
+  \set Staff.connectArpeggios = ##t
   \stemNeutral
   r4 <a cis e a>8-.\arpeggio r r4
   r4 <a c! fis a>8-.\arpeggio r r4
-  r4 << {
-    b'4\arpeggio (cis
-    a) fis'\arpeggio (e
-    d e\arpeggio fis
-    g) b,\arpeggio (<a fis'>
-    <g e'> fis b
-    <b dis> <cis e> <d fis>)
-  } \\
-  {
-    <e, g>8_.\arpeggio s s4
-    s <d a'>8_.\arpeggio s s4
-    s4 <cis ais'>8_.\arpeggio s s4
-    s4 <b e g>8_.\arpeggio s s4
-    s4 b8_. s s4
-    r4 e8_. r g4->
-  }
+  r4 <<
+    {
+      b'4\arpeggio (cis
+      a) fis'\arpeggio (e
+      d e\arpeggio fis
+      g) b,\arpeggio (<a fis'>
+      <g e'> fis b
+      <b dis> <cis e> <d fis>)
+    } \\
+    {
+      <e, g>8_.\arpeggio s s4
+      s <d a'>8_.\arpeggio s s4
+      s4 <cis ais'>8_.\arpeggio s s4
+      s4 <b e g>8_.\arpeggio s s4
+      s4 b8_. s s4
+      r4 e8_. r g4->
+    }
   >>
 }
 
 varIIIL = \relative c, {
-    <c c'>4-. <g' g'>-. <c c'>-.
-    <b b'>-. fis'-. b,-.
-    <e, e'>-. <b' b'>-. <e e'>-.
-    <d d'>-. a'-. d,-.
-    <fis,, fis'>-. <b b'>-. <fis' fis'>-.
-    <g g'>-. e'-. g-.
-    <b,, b'>-. <fis' fis'>-. <b b'>-.
-    <e, e'>-. a'-. c-.
+  <c c'>4-. <g' g'>-. <c c'>-.
+  <b b'>-. fis'-. b,-.
+  <e, e'>-. <b' b'>-. <e e'>-.
+  <d d'>-. a'-. d,-.
+  <fis,, fis'>-. <b b'>-. <fis' fis'>-.
+  <g g'>-. e'-. g-.
+  <b,, b'>-. <fis' fis'>-. <b b'>-.
+  <e, e'>-. a'-. c-.
 }
 
 varIVL = \relative e {
-    <e g b>4-. <e,, e'>2
-    <fis' fis'>4 <fis, fis'>2
-    <g' g'>4 <g, g'>2
-    <a' a'>4 <a, a'>2
-    <ais' ais'>4 <ais, ais'>2
-    <b' b'>4 <b, b'>2
-    <b' b'>2 <b, b'>4
-    <e, e'>4 <e' e'>2
+  <e g b>4-. <e,, e'>2
+  <fis' fis'>4 <fis, fis'>2
+  <g' g'>4 <g, g'>2
+  <a' a'>4 <a, a'>2
+  <ais' ais'>4 <ais, ais'>2
+  <b' b'>4 <b, b'>2
+  <b' b'>2 <b, b'>4
+  <e, e'>4 <e' e'>2
 }
 
 dynamics =
@@ -261,7 +288,7 @@ dynamics =
 }
 
 varVL = \relative e {
-    \voiceTwo {
+  \voiceTwo {
     e8^. e, [(b' e] g) r
     fis^. fis, [(a dis] a') d,8\rest
     g^. g, [(b e g b) ]
@@ -269,7 +296,25 @@ varVL = \relative e {
     ais'^. ais, ([cis ais'] e) d8\rest
     b'^. b, ([e g] cis) d,8\rest
     \stemUp b,-. \stemDown fis' [(b dis a' fis) ]
-    \stemUp e,-. \stemNeutral dis' [(e fis g e)] }
+    \stemUp e,-. \stemNeutral dis' [(e fis g e)]
+  }
+}
+
+varVIL = \relative e, {
+  \slurUp
+  \tuplet 3/2 4 { \stemDown e8 (dis' a' g e b } \stemNeutral e,4)
+  \tuplet 3/2 4 { \stemDown fis8 (c' b' a es c } \stemNeutral fis,4)
+  \tuplet 3/2 4 { \stemDown g8 (fis' c' b g d } \stemNeutral g,4)
+  \tuplet 3/2 4 { \stemDown a8 (es' d' c a e } \stemNeutral a,4)
+  \tuplet 3/2 4 { \stemDown ais8 (e'! d' cis ais fis e cis ais) }
+  \tuplet 3/2 4 { b (g' fis' e cis a! g e cis) }
+  \set Staff.connectArpeggios = ##t
+  <<
+    { \tuplet 3/2 4 { \stemDown d8 (a' g' \stemUp fis\arpeggio dis b a fis dis) } }
+    \\
+    { s4 dis4\arpeggio b }
+  >>
+  <e, e'>8 [(g)] <b, b'> (<fis'' b>) d8.\rest
 }
 
 \score {
@@ -283,7 +328,7 @@ varVL = \relative e {
     }
     \dynamics
     \new Staff = "down" \with {
-        \consists "Span_arpeggio_engraver"
+      \consists "Span_arpeggio_engraver"
     } {
       \themeL
       \varIL
@@ -291,6 +336,7 @@ varVL = \relative e {
       \varIIIL
       \varIVL
       \varVL
+      \varVIL
     }
   >>
   \layout { }
