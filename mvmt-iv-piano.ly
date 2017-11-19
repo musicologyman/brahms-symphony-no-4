@@ -186,7 +186,31 @@ varVIR = \relative a {
     }
   >>
 
-  <g b g'>8 \f [(e')] <b dis fis b> \f ([dis]) r8.
+  <g b g'>8 \f [(e')] <b dis fis b> \f ([dis]) r8. _\markup \italic { più \dynamic f }
+}
+
+varVIIR = \relative g'' {
+  <<
+    {g16
+    fis4.. (dis16 e8) b16\rest d! |
+    c4.. (a16 b8) b16\rest b'16 |
+    a4.. (fis16 g8) b,16\rest fis' |
+    e4.. (c16 a8) b16\rest fis' |
+    e4.. (cis16 ais8) b16\rest cis' |
+    b4.. g16 e4 ~
+    e8. c'16 a4.. fis16 |
+    <dis, dis'>2 e'4 }
+    \\
+    {b16
+     a8. [<a c>16 _\markup \italic { ben marc. } <g b>8. <fis a>16] <e g>8 s16 fis |
+     a8. [<e g>16 <d! fis>8. <cis e>16] <b fis'>8 s16 b' |
+     dis8. [<cis e>16 <b dis>8. <a cis>16] <g b>8 s16 d'! |
+     c8. [<g b>16 <fis a>8. <e g>16] <dis fis>8 s16 c' |
+     cis8. [<g b>16 <fis ais>8. <e gis>16] fis8 s16 cis' \ff |
+     b8. [<b e g>16 <a dis fis>8. <g e'>16] e8. <e a c>16 |
+     <d! gis b>8. [<c' a'>16] a8. [<a fis'>16 <c e>8. <a dis>16] |
+     r8. <a c>16 [<g b>8. <fis a>16] <e g>4 }
+     >>
 
 }
 
@@ -289,7 +313,11 @@ dynamics =
   s2. \break
   s2. * 7
   s2 \bar "" \break
-    s4
+  %variation VII
+  \repeat unfold 7 { s2. \noBreak  }
+  s2. \break
+
+
 }
 
 varVL = \relative e {
@@ -322,6 +350,21 @@ varVIL = \relative e, {
   <e, e'>8 [(g)] <b, b'> ([<fis'' b>]) d8.\rest
 }
 
+varVIIL = \relative e {
+  \stemNeutral
+  \oneVoice
+  e16
+  \once \override Dots #'Y-offset = #1
+  c'8.  <e,,, e'>16 [<g g'>8. <c c'>16] d'8.\rest a'16 |
+  fis'8. <fis,,, fis'>16 [<a a'>8. <dis dis'>16] d'8.\rest g16 |
+  fis'8. <g,,, g'>16 [<b b'>8. <e e'>16] r8. g'16 |
+  a8. <a,, a'>16 [<c c'>8. <fis fis'>16] r8. a'16 |
+  ais8. <ais,, ais'>16 [<cis cis'>8. <fis fis'>16] r4 |
+  r8. <b, b'>16 <e e'>4 r8. <e e'>16 |
+  <a a'>4 r8. <fis, fis'>16 <b b'>4 |
+  r8. <b b'>16 <e e'>4 r8. <b b'>16 |
+}
+
 \score {
   \new GrandStaff <<
     \new Staff = "up" {
@@ -330,6 +373,7 @@ varVIL = \relative e, {
       \varIIIR
       \varVR
       \varVIR
+      \varVIIR
     }
     \dynamics
     \new Staff = "down" \with {
@@ -342,6 +386,7 @@ varVIL = \relative e, {
       \varIVL
       \varVL
       \varVIL
+      \varVIIL
     }
   >>
   \layout { }
