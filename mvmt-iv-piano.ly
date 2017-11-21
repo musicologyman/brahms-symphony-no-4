@@ -6,7 +6,7 @@
 
 \paper {
   indent = 0\in
-  %ragged-last = ##t
+  ragged-last = ##t
   #(set-paper-size "letter" 'landscape)
 }
 
@@ -214,6 +214,17 @@ varVIIR = \relative g'' {
 
 }
 
+varVIIIR = \relative b {
+    r16 b e g b <g ais> b <fis a> b <e, g> b' <b, d fis> |
+    <e b'> c <es a> c <es c'> a fis d es! c a fis |
+    <b d> d [g b] d <bes cis> d <a c> d <g, b> d' <fis, a> |
+    <g d'> es <fis c'> es <fis es'> c' a f fis es c a |
+    <cis e! g> e (g cis e <g, dis'> e' <g, d'> e' <g, cis!> e' <g, c>
+    e' <g, b> e' <g, ais> e' <gis, b> e' <gis, c> e' <g,! b> e' <g, ais!> ) |
+    e' (<gis, b> e' <gis, d'> e' <e, a cis> e' <e, a c> e' <e, g b> e' <e, g d>) |
+    e' (<e, a d> e' <e, a cis> e' <e, a cis> e' <e, a c> e' <e, a c> e' <fis, a>)
+}
+
 themeL = \relative c {
   \clef bass
   \globalA
@@ -312,10 +323,21 @@ dynamics =
   s2. * 6 \noBreak
   s2. \break
   s2. * 7
-  s2 \bar "" \break
+  s2. \bar "" \break
   %variation VII
   \repeat unfold 7 { s2. \noBreak  }
   s2. \break
+
+  % variation VIII
+  \repeat unfold 2 {
+      s8 \f s8 \< s4 s8 \! s8
+      s4 s \sf s \sf }
+  s4 \f s16 \fp s16 -\markup \italic { dim. sempre } s8 s4
+  s2. * 2
+  s4 \pp s2 \>
+
+  % variation IX
+  s2. \f
 
 
 }
@@ -365,6 +387,30 @@ varVIIL = \relative e {
   r8. <b b'>16 <e e'>4 r8. <b b'>16 |
 }
 
+varVIIIL = \relative e,, {
+    <e e'>8
+    <<
+        { b''8 (cis dis e g) }
+        \\
+        { e,8 ~ e2 }
+    >>
+    \slurUp
+    <fis, fis'>4 (\stemDown <a' fis'>8-.) r <fis' a>-. r
+    \stemNeutral
+    \slurNeutral
+    <g,, g'>8
+    <<
+        { d''8 (e fis g b) }
+        \\
+        { g, ~ g2 }
+    >>
+    <a, a'>4 (<a' c fis a>8-.)  r <a' c>8-. r
+    <ais,, ais'>2.
+    <b b'>
+    <e, e'>
+    <a a'>2 <a' e' fis>4
+}
+
 \score {
   \new GrandStaff <<
     \new Staff = "up" {
@@ -374,6 +420,7 @@ varVIIL = \relative e {
       \varVR
       \varVIR
       \varVIIR
+      \varVIIIR
     }
     \dynamics
     \new Staff = "down" \with {
@@ -387,6 +434,7 @@ varVIIL = \relative e {
       \varVL
       \varVIL
       \varVIIL
+      \varVIIIL
     }
   >>
   \layout { }
