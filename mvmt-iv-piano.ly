@@ -4,10 +4,17 @@
   tagline = ##f
 }
 
+\layout {
+  \context {
+    \Score
+    \remove "Bar_number_engraver"
+  }
+}
+
 \paper {
   indent = 0\in
   ragged-last = ##t
-  #(set-paper-size "letter" 'landscape)
+  #(set-paper-size "letter" )
 }
 
 globalA = {
@@ -222,7 +229,34 @@ varVIIIR = \relative b {
     <cis e! g> e (g cis e <g, dis'> e' <g, d'> e' <g, cis!> e' <g, c>
     e' <g, b> e' <g, ais> e' <gis, b> e' <gis, c> e' <g,! b> e' <g, ais!> ) |
     e' (<gis, b> e' <gis, d'> e' <e, a cis> e' <e, a c> e' <e, g b> e' <e, g d>) |
-    e' (<e, a d> e' <e, a cis> e' <e, a cis> e' <e, a c> e' <e, a c> e' <fis, a>)
+    e' (<e, a d> e' <e, a cis> e' <e, a cis> e' <e, a  c> e' <e, a c> e' <fis, a>)
+}
+
+varIXR = \relative e' {
+    \tuplet 6/4 {e16 g b e g b} <e, e'> dis' <e, e'> d' <e, e'> c' <e, e'> b'
+    <e, e'> a <es es'> a
+        \override TupletBracket.stencil = #'()
+        \set subdivideBeams = ##t
+        \set baseMoment = #(ly:make-moment 1/8)
+        \tuplet 3/2 8 { <d, d'>16 c' a d, c a }
+        \tupletDown
+        \tuplet 3/2 {es'c a} es8-.
+        \tupletNeutral
+
+        \set subdivideBeams = ##f
+        \tuplet 6/4 { g16 b d g b d } <g, g'> fis' <g, g'> f' <g, g'> e' <g, g'> d'
+        <g, g'> c <eis, eis'> c'
+        \set subdivideBeams = ##t
+        \tupletUp
+        \tuplet 3/2 8 { <fis, fis'> dis' c fis, dis c <g g'> e' cis } g8-.
+        \set subdivideBeams = ##f
+        \tuplet 3/2 { e'16 [g cis] } e \fp (e, <dis' e> e, <d' e> e, <cis' e> e, <c' e> e,
+        <b' e> e, <a e'> e <gis e'> e <g e'> e <fis e'> e <f e'> e)
+        e (e, <dis' e> e, <d' e> e, <cis' e> e, <c' e> e,
+        <b' e> e, <a e'> e <gis e'> e <g e'> e <fis e'> e f8 e)
+        \tupletNeutral
+        \revert TupletBracket.stencil
+
 }
 
 themeL = \relative c {
@@ -300,33 +334,43 @@ dynamics =
 \new Dynamics {
   % theme
   s2. \ff \repeat unfold 7 s
-  \break
+  %\break
   % varI
-  s \f \noBreak
-  s4 \< s \! s \noBreak
-  \repeat unfold 3 { s2. \noBreak }
-  s _\markup \italic "dim." \noBreak
-  s
+  s \f
+  s4 \< s \! s
+  \repeat unfold 3 { s2.  }
+  s _\markup \italic "dim."
+  s 
+  %\break
   s4 s _\markup { \dynamic mp \italic "ma marcato" } s
-  \repeat unfold 6 { s2. \noBreak }
-  s4 s2 \cresc \noBreak
+  \repeat unfold 6 { s2.  }
+  s4 s2 \cresc
   s2.
+  %variation III
+  %\break
   s2. \f
-  \repeat unfold 6 { s2. \noBreak }
-  s2. \break
+  \repeat unfold 6 { s2.  }
+  s2. 
+  %\break
   s2. \f
-  \repeat unfold 4 { s2. \noBreak }
+  \repeat unfold 4 { s2. }
   s4 s2 \<
   s2.
-  s \! \break
+  s \! 
+  %\break
   s2. -\markup { \italic "poco" \dynamic f }
-  s2. * 6 \noBreak
-  s2. \break
+  s2. * 6
+  s2. 
+  %\break
   s2. * 7
-  s2. \bar "" \break
+  s2 
+  %\bar "" \break
+
   %variation VII
-  \repeat unfold 7 { s2. \noBreak  }
-  s2. \break
+  s4
+  \repeat unfold 7 { s2. }
+  s2. 
+  %\break
 
   % variation VIII
   \repeat unfold 2 {
@@ -335,11 +379,19 @@ dynamics =
   s4 \f s16 \fp s16 -\markup \italic { dim. sempre } s8 s4
   s2. * 2
   s4 \pp s2 \>
+  %\break
 
   % variation IX
   s2. \f
+  s2. * 3
+  s2. \f
+  s2.
+  s2. \>
+  s2. 
+  %\break
 
-
+  % variation X
+  s2. \p
 }
 
 varVL = \relative e {
@@ -362,10 +414,15 @@ varVIL = \relative e, {
   \tuplet 3/2 4 { \stemDown g8 (fis' c' b g d } \stemNeutral g,4)
   \tuplet 3/2 4 { \stemDown a8 (es' d' c a e } \stemNeutral a,4)
   \tuplet 3/2 4 { \stemDown ais8 (e'! d' cis ais fis e cis ais) }
+  \shape #'((0 . 0) (0 . 1) (-1 . 0) (0 . 0)) Slur
   \tuplet 3/2 4 { b (g' fis' e cis a! g e cis) }
   \set Staff.connectArpeggios = ##t
   <<
-    { \tuplet 3/2 4 { \stemDown d8 (a' g' \stemUp fis\arpeggio dis b a fis dis) } }
+    { 
+
+      \once \override TupletNumber #'Y-offset = #4
+      \shape #'((0 . 0) (0 . 1) (0 . 2) (0 . 0)) Slur
+      \tuplet 3/2 4 { \stemDown d8 (a' g' \stemUp fis\arpeggio dis b a fis dis) } }
     \\
     { s4 dis4\arpeggio b }
   >>
@@ -411,6 +468,49 @@ varVIIIL = \relative e,, {
     <a a'>2 <a' e' fis>4
 }
 
+varIXL = \relative e {
+    \tuplet 6/4 { <e e'>16 b' g e b g } <e e'> fis <e e'> gis <e e'> a <e e'> b'
+    <fis, c' fis>4
+        \override TupletBracket #'stencil = #'()
+        \set subdivideBeams = ##t
+        \set baseMoment = #(ly:make-moment 1/8)
+        \tuplet 3/2 { fis'16 a d } fis8-.
+        \set subdivideBeams = ##f
+        \tuplet 3/2 8 {fis16 a c fis c a }
+    \tuplet 6/4 { <g g'>16 d' b g d b }
+        <g g'> a <g g'> b <g g'> c <g g'> d'
+        <a, dis a'>4
+            \tupletUp
+            \set subdivideBeams = ##t
+            \tuplet 3/2 { a'16 c dis } a'8-.
+            \tuplet 3/2 8 { a16 cis e a e cis }
+    \tupletNeutral
+    \set subdivideBeams = ##f
+    <<
+        \voiceOne { r8 e (dis d _\markup \italic "dim." cis c
+          <gis b> a gis g fis f) }
+        \\
+        \voiceTwo { s8 <e g ais> ~ <e g ais>2
+            s2. }
+        \\
+        \voiceFour { {<ais,, ais'>2.}
+            <b' e> }
+    >>
+    <e, gis d' e>2.
+    <<
+        {cis'2 (c8) }
+        \\
+        \new Voice <<
+          \stemDown
+          \slurDown
+          { e2 e8 }
+          { a,2 (a8) }
+        >>
+
+    >>
+    r8
+}
+
 \score {
   \new GrandStaff <<
     \new Staff = "up" {
@@ -421,6 +521,7 @@ varVIIIL = \relative e,, {
       \varVIR
       \varVIIR
       \varVIIIR
+      \varIXR
     }
     \dynamics
     \new Staff = "down" \with {
@@ -435,6 +536,7 @@ varVIIIL = \relative e,, {
       \varVIL
       \varVIIL
       \varVIIIL
+      \varIXL
     }
   >>
   \layout { }
