@@ -259,6 +259,24 @@ varIXR = \relative e' {
 
 }
 
+varXR = \relative fis' {
+    R2.
+    <fis ais cis e>2.->
+    (<g b d>4) r r
+    <<
+        \voiceTwo { <a cis e g>2.->
+            (<ais e' fis>4) r r }
+        \\
+        \voiceOne { s2. cis2.-> }
+    >>
+    <b e g b>2.
+    <<
+        { dis,2.->  (e4) b4\rest b4\rest }
+        \\
+        { s2. <a c> }
+    >>
+}
+
 themeL = \relative c {
   \clef bass
   \globalA
@@ -340,7 +358,7 @@ dynamics =
   s4 \< s \! s
   \repeat unfold 3 { s2.  }
   s _\markup \italic "dim."
-  s 
+  s
   %\break
   s4 s _\markup { \dynamic mp \italic "ma marcato" } s
   \repeat unfold 6 { s2.  }
@@ -350,26 +368,26 @@ dynamics =
   %\break
   s2. \f
   \repeat unfold 6 { s2.  }
-  s2. 
+  s2.
   %\break
   s2. \f
   \repeat unfold 4 { s2. }
   s4 s2 \<
   s2.
-  s \! 
+  s \!
   %\break
   s2. -\markup { \italic "poco" \dynamic f }
   s2. * 6
-  s2. 
+  s2.
   %\break
   s2. * 7
-  s2 
+  s2
   %\bar "" \break
 
   %variation VII
   s4
   \repeat unfold 7 { s2. }
-  s2. 
+  s2.
   %\break
 
   % variation VIII
@@ -387,11 +405,16 @@ dynamics =
   s2. \f
   s2.
   s2. \>
-  s2. 
+  s2.
   %\break
 
   % variation X
   s2. \p
+  s2.
+  s2. -\markup \italic { poco cresc. }
+  s2. * 2
+  s2. \pp
+  s2.
 }
 
 varVL = \relative e {
@@ -418,7 +441,7 @@ varVIL = \relative e, {
   \tuplet 3/2 4 { b (g' fis' e cis a! g e cis) }
   \set Staff.connectArpeggios = ##t
   <<
-    { 
+    {
 
       \once \override TupletNumber #'Y-offset = #4
       \shape #'((0 . 0) (0 . 1) (0 . 2) (0 . 0)) Slur
@@ -511,6 +534,21 @@ varIXL = \relative e {
     r8
 }
 
+varXL = \relative e {
+    <e gis b d>2.->
+    (<fis ais cis>4) r r
+    <g! b d f>2.->
+    (<a cis e>4) r r
+    \slurDown
+    <fis ais cis e>2.->
+    (<g b e>4) r r
+    <<
+        { s2. <a, c>2. }
+        \\
+        { <b fis' a>2. (e,4) s s}
+    >>
+}
+
 \score {
   \new GrandStaff <<
     \new Staff = "up" {
@@ -522,6 +560,7 @@ varIXL = \relative e {
       \varVIIR
       \varVIIIR
       \varIXR
+      \varXR
     }
     \dynamics
     \new Staff = "down" \with {
@@ -537,6 +576,7 @@ varIXL = \relative e {
       \varVIIL
       \varVIIIL
       \varIXL
+      \varXL
     }
   >>
   \layout { }
