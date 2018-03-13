@@ -264,16 +264,44 @@ varXR = \relative fis' {
     <fis ais cis e>2.->
     (<g b d>4) r r
     <<
-        \voiceTwo { <a cis e g>2.->
-            (<ais e' fis>4) r r }
+        \voiceTwo { \slurUp <a cis e g>2.->
+            (<ais e' fis>4) f\rest f\rest }
         \\
-        \voiceOne { s2. cis2.-> }
+        \voiceOne { s2. cis'2.-> }
     >>
-    <b e g b>2.
+    <b e g b>2.->
     <<
-        { dis,2.->  (e4) b4\rest b4\rest }
+        { dis,2.->  (e4) a4\rest a4\rest }
         \\
-        { s2. <a c> }
+        { s2. <a, c> }
+    >>
+}
+
+varXIR = \relative b {
+    \override TupletBracket #'stencil = #'()
+    \slurDown
+    \tuplet 3/2 4 { \tupletDown <b d gis>8-. ^\markup \italic { \dynamic p molto dolce }
+        (<d g b d>-. <d g b d>-.)
+        \tupletUp
+        r \slurUp <g b d>-. (<g b cis>-. <g b d>-. <g b e>-. <g b d>-.) }
+        r8 <<
+            { e' ~ e2 }
+            \\
+            { <ais, cis>8-. (r <gis b>-. r <fis ais>-.) }
+        >>
+    \tuplet 3/2 { <d! f! b>8-. (<f b d f!>-. <f b d f>-.) }
+    \tuplet 3/2 { r8 <b d f>-. (<b d e>-. }
+    \tuplet 3/2 { <b d f>-. <b d g>-. <b d f>-.) }
+    r8 <<
+        { g'2 
+            \once \override Stem.transparent = ##t 
+            \once \override Slur.positions = #'(4.5 . 3.5) 
+            \once \override Script.Y-offset = #3.75
+              g8-. 
+          (b,8\rest \stemDown <g d' fis>-. b\rest <g cis e>-.) b\rest <c g' e'>-. }
+        \\
+        { <cis e>8-. (r <b d>-. r <a c e g>-.) 
+        s2.}
     >>
 }
 
@@ -413,8 +441,9 @@ dynamics =
   s2.
   s2. -\markup \italic { poco cresc. }
   s2. * 2
+  s2. 
+  \once \override DynamicText.Y-offset = #-3.0
   s2. \pp
-  s2.
 }
 
 varVL = \relative e {
@@ -561,6 +590,7 @@ varXL = \relative e {
       \varVIIIR
       \varIXR
       \varXR
+      \varXIR
     }
     \dynamics
     \new Staff = "down" \with {
