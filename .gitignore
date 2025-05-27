@@ -2,3 +2,5 @@
 *.pdf
 *.png
 *.swp
+*.ly~
+!mvmt-iv-piano-page1.png

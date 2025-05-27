@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.24.4"
 
 \header {
   tagline = ##f
@@ -278,7 +278,7 @@ varXR = \relative fis' {
 }
 
 varXIR = \relative b {
-    \override TupletBracket #'stencil = #'()
+    \override TupletBracket.stencil = #'()
     \slurDown
     \tuplet 3/2 4 { \tupletDown <b d gis>8-. ^\markup \italic { \dynamic p molto dolce }
         (<d g b d>-. <d g b d>-.)
@@ -472,7 +472,7 @@ varVIL = \relative e, {
   <<
     {
 
-      \once \override TupletNumber #'Y-offset = #4
+      \once \override TupletNumber.Y-offset = #4
       \shape #'((0 . 0) (0 . 1) (0 . 2) (0 . 0)) Slur
       \tuplet 3/2 4 { \stemDown d8 (a' g' \stemUp fis\arpeggio dis b a fis dis) } }
     \\
@@ -485,7 +485,7 @@ varVIIL = \relative e {
   \stemNeutral
   \oneVoice
   e16
-  \once \override Dots #'Y-offset = #1
+  \once \override Dots.Y-offset = #1
   c'8.  <e,,, e'>16 [<g g'>8. <c c'>16] d'8.\rest a'16 |
   fis'8. <fis,,, fis'>16 [<a a'>8. <dis dis'>16] d'8.\rest g16 |
   fis'8. <g,,, g'>16 [<b b'>8. <e e'>16] r8. g'16 |
@@ -523,7 +523,7 @@ varVIIIL = \relative e,, {
 varIXL = \relative e {
     \tuplet 6/4 { <e e'>16 b' g e b g } <e e'> fis <e e'> gis <e e'> a <e e'> b'
     <fis, c' fis>4
-        \override TupletBracket #'stencil = #'()
+        \override TupletBracket.stencil = #'()
         \set subdivideBeams = ##t
         \set baseMoment = #(ly:make-moment 1/8)
         \tuplet 3/2 { fis'16 a d } fis8-.
